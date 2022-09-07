@@ -1,0 +1,20 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="demo_project.main.parse_arguments" />
+          <option value="ea_play_1" />
+          <option value="ea_play_2" />
+          <option value="df" />
+          <option value="type_curve" />
+          <option value="aggregate_forecast_df" />
+          <option value="counties_forecast_df" />
+          <option value="counties_breakdown" />
+          <option value="production" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
