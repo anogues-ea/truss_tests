@@ -2,7 +2,9 @@ import os.path
 from typing import Dict, List
 import pickle
 
-
+# This works in truss because packages directory is added to the path
+# it will however show as incorrect in pycharm
+from test_model import TestModel
 
 
 class Model:
@@ -13,8 +15,8 @@ class Model:
 
     def load(self):
         # Load model here and assign to self._model.
-        path = os.path.join(self._config['data_dir'], 'test_truss.pickle')
-        self.model = pickle.load(path)
+        path = self._data_dir / 'test_truss.pickle'
+        self.model = pickle.load(open(path, "rb"))
 
     def preprocess(self, request: Dict) -> Dict:
         """
@@ -31,13 +33,17 @@ class Model:
         return request
 
     def predict(self, request: Dict) -> Dict[str, List]:
-        # request = {'inputs': {
+        # request = {'inputs': [{
         #     'a': [1, 2, 3],
         #     'b': [100, 200, 300]
-        # }}
+        # }]}
         response = {}
         inputs = request["inputs"]  # noqa
         # Invoke model and calculate predictions here.
-        response["predictions"] = self.model.run(inputs)
+        predictions = []
+        for input in inputs:
+            predictions.append(self.model.run(input))
+
+        response["predictions"] = predictions
         return response
 
